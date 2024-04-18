@@ -1,0 +1,27 @@
+{
+  "name": "twilio-sheets",
+  "version": "1.0.1",
+  "dependencies": {
+    "axios": "^1.6.8"
+  },
+  "description": "Twilio serverless toolkit integration for mountcitrus SMS add-on",
+  "main": "message-handler.js",
+  "scripts": {
+    "test": "handler"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mountcitrus/twilio-sheets.git"
+  },
+  "keywords": [
+    "Twilio",
+    "Google sheets",
+    "SMS"
+  ],
+  "author": "Matt Conrad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mountcitrus/twilio-sheets/issues"
+  },
+  "homepage": "https://github.com/mountcitrus/twilio-sheets#readme"
+}
