@@ -9,15 +9,30 @@ Use context.ADMIN_NUMBERS and context.SHEETS_URL or similar
 
 
 // require twilio-sheets
-const twilio = require('twilio-sheets');
-
-/** initialize with the following:
- *  
- * Google sheets web app url (e.g. https://script.google.com/macros/s/[deployment-id]/exec)
- * An array of phone numbers belonging to the SMS administrators for your organization
-*/
-twilio.initialize("https://script.google.com/macros/s/[deployment-id]/exec", ["555-444-3210"]);
+const ts = require('twilio-sheets');
 
 exports.handler = function(context, event, callback) {
-  return twilio.handler(context, event, callback);
-};
+
+  // Google sheets web app url (e.g. https://script.google.com/macros/s/[deployment-id]/exec)
+  ts.setSheetsWebEndpoint(context.SHEETS_URL);
+
+  // An array of phone numbers belonging to the SMS administrators for your organization
+  ts.setAdminPhones([context.LAURA, context.JAMES]);
+
+  return ts.handler(context, event, callback);
+}
+
+/**
+* This function is called by the Twilio message handler when a text is sent to your Twilio phone number
+*/
+const doPost = (request = {}) => {
+  const { parameter, postData: { contents, type } = {} } = request;
+  return TwilioSheets.handleResponse(contents);
+}
+
+/**
+* Optionally create a timer-based trigger to process all queued messages
+*/
+function sendQueuedMessages() {
+  TwilioSheets.sendQueuedMessages();
+}
