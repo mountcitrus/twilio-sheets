@@ -6,15 +6,20 @@ var ADMIN_PHONES = [];
 
 exports.report = () => {
     //return ADMIN_PHONES;
-    return utilities.isAdmin("2536771843", ADMIN_PHONES);
+    return utilities.getToken("2536771843", "456");
 }
 
 /**
  * @param {string} sheetsWebUri - Google sheets web app url (e.g. https://script.google.com/macros/s/[deployment-id]/exec)
+ */
+exports.setSheetsWebEndpoint = (sheetsWebUri) => {
+    SHEETS_URI = sheetsWebUri;
+}
+
+/**
  * @param {string[]} adminPhones - array of phone numbers belong to the SMS administrators
  */
-exports.initialize = (sheetsWebUri, adminPhones) => {
-    SHEETS_URI = sheetsWebUri;
+exports.setAdminPhones = (adminPhones) => {
     ADMIN_PHONES = adminPhones;
 }
 
@@ -27,6 +32,7 @@ exports.handler = async (context, event, callback) => {
     // let's see if this is a new message draft or if they are already working on one
     let response = await axios.post(SHEETS_URI, {
         sender: event.From,
+        token: utilities.getToken(context),
         action: 'draftMessage',
         reply: reply
       });
@@ -71,6 +77,7 @@ exports.handler = async (context, event, callback) => {
     // record the response in our sheet
     axios.post(SHEETS_URI, {
       sender: event.From,
+      token: utilities.getToken(context),
       action: 'recordResponse',
       reply: reply
     });
