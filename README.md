@@ -1,10 +1,8 @@
 # Twilio Sheets
 
-Twilio Sheets integrates the [Twilio](https://www.twilio.com/en-us/messaging/channels/sms) messaging platform with Google Sheets.
+Twilio Sheets integrates the [Twilio](https://www.twilio.com/en-us/messaging/channels/sms) messaging platform with Google Sheets. Learn more at [mount citrus](https://mountcitrus.com).
 
-NPM [package](https://www.npmjs.com/package/twilio-sheets)
-
-GitHub [repo](https://github.com/mountcitrus/twilio-sheets)
+Find the NPM package [here](https://www.npmjs.com/package/twilio-sheets) and the GitHub repo [here](https://github.com/mountcitrus/twilio-sheets).
 
 ## Documentation
 
@@ -114,7 +112,7 @@ The final step is to tell Twilio to run this function for all incoming messages.
 > [!IMPORTANT]
 > Only admins are allowed to send messages
 
-### 
+### Testing Steps
 
   1. Create a new group in your Google sheet
   2. Add a name and phone number for a device you have access to (you may use the same admin phone for convenience)
