@@ -12,8 +12,10 @@ Additional guides for Twilio Sheets can be found at [mount citrus](https://mount
 
 ## Twilio Serverless Functions
 
-[!IMPORTANT]
-Test
+> [!IMPORTANT]
+> To get started you will need
+> * A Twilio [phone number](https://www.twilio.com/en-us/phone-numbers/toll-free)
+> * A Google account for creating a new sheet
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/assets/images/twilio_account.png)
 
