@@ -10,14 +10,14 @@ GitHub [repo](https://github.com/mountcitrus/twilio-sheets)
 
 > [!IMPORTANT]
 > To get started you will need
-> * A Twilio [phone number](https://www.twilio.com/en-us/phone-numbers/toll-free)
+> * A Twilio toll-free [phone number](https://www.twilio.com/en-us/phone-numbers/toll-free)
 > * A Google account for creating a new sheet
 
 ## Google Sheets
 
 A Google sheet must be created using the `Twilio Sheets` [add-on](https://mountcitrus.com/docs).
 
-Following the instructions at [mount citrus](https://mountcitrus.com/google-add-on-guide) to get started.
+Follow the instructions at [mount citrus](https://mountcitrus.com/google-add-on-guide) to get started.
 
 ## Twilio Function and Webhook Setup
 
@@ -33,6 +33,8 @@ Click *Add*.
 
 ![Screenshot of Twilio service dependencies.](/assets/images/twilio_function_dependencies.png)
 
+##
+
 ### Environment Variables
 
 Click *Environment Variables*.
@@ -40,7 +42,7 @@ Click *Environment Variables*.
 Your Twilio function will ultimately be associated with a specific Google sheet. When your function makes a HTTP request to your sheet, it includes your Twilio credentials in the header. Your credentials are then validated by your sheet as a security precaution.
 
 > [!IMPORTANT]
-> The option to "Add my Twilio Credentials to ENV" must be enabled.
+> The option to *Add my Twilio Credentials to ENV* must be enabled
 
 **Admin Phone Numbers**
 
@@ -61,15 +63,14 @@ Create a new variable and set the value as the published endpoint for your sheet
 
 ### Function
 
-Click *Add* then *Add Function* and give it an appropriate name. 
+Click *Add* then *Add Function* and give it an appropriate name.
 
-Explanation of the function shown below:
+Copy and paste the code below into your function editor.
 
-**Line #**
-
-  2. Imports the `twilio-sheets` package
-  7. Passes in the endpoint of your published Google sheet stored as an environment variable
- 10. Passes in an array of admin phone numbers stored as environment variables
+> [!NOTE]
+> **Line # 2**  imports the `twilio-sheets` package
+> **Line # 7**  passes in the endpoint of your published Google sheet stored as an environment variable
+> **Line # 10** passes in an array of admin phone numbers stored as environment variables
 
 ```
 // require twilio-sheets
@@ -107,3 +108,25 @@ The final step is to tell Twilio to run this function for all incoming messages.
 ## 
 
 ![Screenshot of Twilio webhook setup.](/assets/images/twilio_webhook_config.png)
+
+## Testing
+
+> [!IMPORTANT]
+> Only admins are allowed to send messages
+
+### 
+
+  1. Create a new group in your Google sheet
+  2. Add a name and phone number for a device you have access to (you may use the same admin phone for convenience)
+  3. From the admin's device, send a text message to your Twilio phone number. You will be prompted with a series of questions used to compose a new message
+  4. As you answer each prompt you should see the *Messages* sheet updated with your responses
+  5. Replying "send" will queue your message
+  6. There are a couple ways to send queued messages. For testing purposes the simplest option is to open your Google sheet, and from the menu, click *Extensions* > *Twilio Sheets* > *Send Queued Messages*
+
+If all goes well a message should have been sent to each number in the group.
+
+See more [detailed instructions](https://mountcitrus.com/google-add-on-guide) for managing your Google sheet.
+
+### Show Me!
+
+See this in action [here](https://www.youtube.com/watch?v=fshqsXeJh48).
