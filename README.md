@@ -10,7 +10,7 @@ GitHub [repo](https://github.com/mountcitrus/twilio-sheets)
 
 Additional guides for Twilio Sheets can be found at [mount citrus](https://mountcitrus.com/docs).
 
-## Twilio Serverless Functions
+## Twilio Function and Webhook Setup
 
 > [!IMPORTANT]
 > To get started you will need
@@ -23,7 +23,7 @@ Login to your Twilio account and create a [new service](https://console.twilio.c
 
 ### Add the `twilio-sheets` Dependency
 
-Click * *Dependencies* *, enter `twilio-sheets` as the Module name, and specify the most current [version](https://www.npmjs.com/package/twilio-sheets?activeTab=versions).
+Click *Dependencies*, enter `twilio-sheets` as the Module name, and set the value to the most current [version](https://www.npmjs.com/package/twilio-sheets?activeTab=versions) of the package.
 
 Click Add.
 
@@ -31,9 +31,9 @@ Click Add.
 
 ### Environment Variables
 
-Click * *Environment Variables* *.
+Click *Environment Variables*.
 
-As you will see, your Twilio function is associated with a specific Google sheet. When your function makes a HTTP request to your sheet, it includes your Twilio Credentials in the header. Your credentials are then validated by your sheet as a security precaution.
+Your Twilio function will ultimately be associated with a specific Google sheet. When your function makes a HTTP request to your sheet, it includes your Twilio credentials in the header. Your credentials are then validated by your sheet as a security precaution.
 
 > [!IMPORTANT]
 > The option to "Add my Twilio Credentials to ENV" must be enabled.
@@ -53,26 +53,39 @@ Create a new variable and set the value as the published endpoint for your sheet
 
 ### Function
 
-Click * *Add* * then * *Add Function* * and give it an appropriate name. 
+Click *Add* then *Add Function* and give it an appropriate name. 
 
 Explanation of the function shown below:
 
-Line # 3  imports the `twilio-sheets` package
-Line # 8  passes in the endpoint of published your Google sheet
-Line # 11 passes in an array of admin phone numbers
+**Line #**
 
-![Screenshot of Twilio environment variables.](/assets/images/twilio_function.png)
-
-* *Learn more about [serverless functions](https://www.twilio.com/docs/serverless/functions-assets/functions).* *
-
-
+  2. Imports the `twilio-sheets` package
+  7. Passes in the endpoint of published your Google sheet
+ 10. Passes in an array of admin phone numbers
 
 ##
 
+![Screenshot of Twilio environment variables.](/assets/images/twilio_function.png)
+
+*Learn more about [serverless functions](https://www.twilio.com/docs/serverless/functions-assets/functions).*
+
+
+### Messaging Webhook
+
+The final step is to tell Twilio to run this function for all incoming messages.
+ 
+  1. Browse to the phone number configuration screen
+  2. Scroll down to the *Message Configuration* section
+  3. Set the incoming message settings to reference your function
+
+## 
+
+![Screenshot of Twilio webhook setup.](/assets/images/twilio_webhook_config.png)
+
+## 
+
+
 ![Screenshot of Twilio account details.](/assets/images/twilio_account.png)
-
-
-Use `context.SHEETS_URL` and `context.ADMIN_NUMBERS` or similar environment variables.
 
 ```
 // require twilio-sheets
