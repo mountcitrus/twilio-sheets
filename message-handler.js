@@ -38,6 +38,12 @@ exports.handler = async (context, event, callback) => {
       });
 
     let data = response.data.message;
+
+    if (data == null) {
+      // the message was swalled by the client
+      return callback(null, "");
+    }
+
     // errors?
     if (data.errorSummary != null) {
       return callback(null, data.errorSummary);

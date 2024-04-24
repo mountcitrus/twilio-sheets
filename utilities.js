@@ -40,14 +40,10 @@ How would you like to greet everyone? Reply with "hello", "good morning", or ano
 exports.promptStep1MultiGroups = (groups) => {
     let groupStr = "";
     for (let i = 0; i < groups.length; i++) {
-      groupStr += `${groups[i].id} – ${groups[i].name}`;
-      if (groups.length > 2 && i < groups.length-2)
-        groupStr += ", ";
-      if (i == groups.length-2)
-        groupStr += " or ";
+      groupStr += `\n${groups[i].id} – ${groups[i].name}`;
     }
   
-    return `Which group number would you like to message: ${groupStr}.
+    return `Which group number would you like to message?\n${groupStr}
     
 Note that you can start over anytime by replying "start over" or "new."`;
 }
@@ -70,7 +66,7 @@ exports.promptStep5ForwardingOption = () => {
 }
   
 exports.promptStep6FinalReview = (message) => {
-    return `Ok, your message will appear like this: "${message}"
+    return `Ok, your message will appear like this:\n\n"${message}"
     
 Reply "send" to deliver the message or "new" to start over.`;
 }

@@ -1,14 +1,26 @@
 # Twilio Sheets
 
-## Documentation
-The documentation for Twilio Sheets can be found [here](https://mountcitrus.com/docs).
+Twilio Sheets helps integrate the Twilio messaging platform with Google Sheets.
 
-Check out these [code examples](https://mountcitrus.com/docs) to get up and running quickly.
+NPM [package](https://www.npmjs.com/package/twilio-sheets)
+
+GitHub [repo](https://github.com/mountcitrus/twilio-sheets)
+
+## Documentation
+
+Additional guides for Twilio Sheets can be found at [mount citrus](https://mountcitrus.com/docs).
 
 ## Twilio Serverless Functions
+
+[!IMPORTANT]
+Test
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/assets/images/twilio_account.png)
+
+
 `twilio-sheets` supports...
 
-Use `context.ADMIN_NUMBERS` and `context.SHEETS_URL` or similar
+Use `context.SHEETS_URL` and `context.ADMIN_NUMBERS` or similar environment variables.
 
 ```
 // require twilio-sheets
