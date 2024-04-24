@@ -1,6 +1,6 @@
 # Twilio Sheets
 
-Twilio Sheets helps integrate the Twilio messaging platform with Google Sheets.
+Twilio Sheets integrates the [Twilio](https://www.twilio.com/en-us/messaging/channels/sms) messaging platform with Google Sheets.
 
 NPM [package](https://www.npmjs.com/package/twilio-sheets)
 
@@ -17,10 +17,60 @@ Additional guides for Twilio Sheets can be found at [mount citrus](https://mount
 > * A Twilio [phone number](https://www.twilio.com/en-us/phone-numbers/toll-free)
 > * A Google account for creating a new sheet
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/assets/images/twilio_account.png)
+### Create a New Service
+
+Login to your Twilio account and create a [new service](https://console.twilio.com/us1/develop/functions/services).
+
+### Add the `twilio-sheets` Dependency
+
+Click * *Dependencies* *, enter `twilio-sheets` as the Module name, and specify the most current [version](https://www.npmjs.com/package/twilio-sheets?activeTab=versions).
+
+Click Add.
+
+![Screenshot of Twilio service dependencies.](/assets/images/twilio_function_dependencies.png)
+
+### Environment Variables
+
+Click * *Environment Variables* *.
+
+As you will see, your Twilio function is associated with a specific Google sheet. When your function makes a HTTP request to your sheet, it includes your Twilio Credentials in the header. Your credentials are then validated by your sheet as a security precaution.
+
+> [!IMPORTANT]
+> The option to "Add my Twilio Credentials to ENV" must be enabled.
+
+**Admin Phone Numbers**
+
+The administrators are those designated to send group messages. Add a variable for each admin and include their phone number as the value.
+
+**Sheets URL**
+
+> [!NOTE]
+> This step requires that you have already set up your Google sheet. [Here](https://mountcitrus.com/docs) are the steps for getting that done.
+
+Create a new variable and set the value as the published endpoint for your sheet. It should look like `https://script.google.com/macros/s/[deployment-id]/exec`.
+
+![Screenshot of Twilio environment variables.](/assets/images/twilio_function_variables.png)
+
+### Function
+
+Click * *Add* * then * *Add Function* * and give it an appropriate name. 
+
+Explanation of the function shown below:
+
+Line # 3  imports the `twilio-sheets` package
+Line # 8  passes in the endpoint of published your Google sheet
+Line # 11 passes in an array of admin phone numbers
+
+![Screenshot of Twilio environment variables.](/assets/images/twilio_function.png)
+
+* *Learn more about [serverless functions](https://www.twilio.com/docs/serverless/functions-assets/functions).* *
 
 
-`twilio-sheets` supports...
+
+##
+
+![Screenshot of Twilio account details.](/assets/images/twilio_account.png)
+
 
 Use `context.SHEETS_URL` and `context.ADMIN_NUMBERS` or similar environment variables.
 
