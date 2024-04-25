@@ -13,9 +13,9 @@ Find the NPM package [here](https://www.npmjs.com/package/twilio-sheets) and the
 
 ## Google Sheets
 
-A Google sheet must be created using the `Twilio Sheets` [add-on](https://mountcitrus.com/docs).
+A Google sheet must be created using the `Twilio Sheets` [add-on](https://mountcitrus.com/getting-started).
 
-Follow the instructions at [mount citrus](https://mountcitrus.com/google-add-on-guide) to get started.
+Follow the instructions at [mount citrus](https://mountcitrus.com/getting-started) to get started.
 
 ## Twilio Function and Webhook Setup
 
@@ -49,7 +49,7 @@ The administrators are those designated to send group messages. Add a variable f
 **Sheets URL**
 
 > [!NOTE]
-> This step requires that you have already set up your Google sheet. [Here](https://mountcitrus.com/google-add-on-guide) are the steps for getting that done.
+> This step requires that you have already set up your Google sheet. [Here](https://mountcitrus.com/getting-started) are the steps for getting that done.
 
 Create a new variable and set the value as the published endpoint for your sheet. It should look like `https://script.google.com/macros/s/[deployment-id]/exec`.
 
@@ -123,7 +123,7 @@ The final step is to tell Twilio to run this function for all incoming messages.
 
 If all goes well a message should have been sent to each number in the group.
 
-See more [detailed instructions](https://mountcitrus.com/google-add-on-guide) for managing your Google sheet.
+See more [detailed instructions](https://mountcitrus.com/getting-started) for managing your Google sheet.
 
 ### Show Me!
 
