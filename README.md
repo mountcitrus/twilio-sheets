@@ -66,9 +66,9 @@ Click *Add* then *Add Function* and give it an appropriate name.
 Copy and paste the code below into your function editor.
 
 > [!NOTE]
-> **Line # 2**  imports the `twilio-sheets` package
-> **Line # 7**  passes in the endpoint of your published Google sheet stored as an environment variable
-> **Line # 10** passes in an array of admin phone numbers stored as environment variables
+> * **Line # 2**  imports the `twilio-sheets` package
+> * **Line # 7**  passes in the endpoint of your published Google sheet stored as an environment variable
+> * **Line # 10** passes in an array of admin phone numbers stored as environment variables
 
 ```
 // require twilio-sheets
