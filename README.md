@@ -4,18 +4,10 @@ Twilio Sheets integrates the [Twilio](https://www.twilio.com/en-us/messaging/cha
 
 Find the NPM package [here](https://www.npmjs.com/package/twilio-sheets) and the GitHub repo [here](https://github.com/mountcitrus/twilio-sheets).
 
-## Documentation
-
 > [!IMPORTANT]
 > To get started you will need
 > * A Twilio toll-free [phone number](https://www.twilio.com/en-us/phone-numbers/toll-free)
 > * A Google account for creating a new sheet
-
-## Google Sheets
-
-A Google sheet must be created using the `Twilio Sheets` [add-on](https://mountcitrus.com/getting-started).
-
-Follow the instructions at [mount citrus](https://mountcitrus.com/getting-started) to get started.
 
 ## Twilio Function and Webhook Setup
 
@@ -108,6 +100,10 @@ The final step is to tell Twilio to run this function for all incoming messages.
 ![Screenshot of Twilio webhook setup.](/assets/images/twilio_webhook_config.png)
 
 ## Testing
+
+### Google Sheets
+
+Follow the instructions at [mount citrus](https://mountcitrus.com/getting-started) to get your Google sheet ready to send and receive messages.
 
 > [!IMPORTANT]
 > Only admins are allowed to send messages
