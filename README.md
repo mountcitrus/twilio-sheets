@@ -41,7 +41,7 @@ The administrators are those designated to send group messages. Add a variable f
 **Sheets URL**
 
 > [!NOTE]
-> This step requires that you have already set up your Google sheet. [Here](https://mountcitrus.com/getting-started) are the steps for getting that done.
+> This step requires that you have already set up your Google sheet. [Here](https://mountcitrus.com/get-started) are the steps for getting that done.
 
 Create a new variable and set the value as the published endpoint for your sheet. It should look like `https://script.google.com/macros/s/[deployment-id]/exec`.
 
@@ -103,7 +103,7 @@ The final step is to tell Twilio to run this function for all incoming messages.
 
 ### Google Sheets
 
-Follow the instructions at [mount citrus](https://mountcitrus.com/getting-started) to get your Google sheet ready to send and receive messages.
+Follow the instructions at [mount citrus](https://mountcitrus.com/get-started) to get your Google sheet ready to send and receive messages.
 
 > [!IMPORTANT]
 > Only admins are allowed to send messages
@@ -119,7 +119,7 @@ Follow the instructions at [mount citrus](https://mountcitrus.com/getting-starte
 
 If all goes well a message should have been sent to each number in the group.
 
-See more [detailed instructions](https://mountcitrus.com/getting-started) for managing your Google sheet.
+See more [detailed instructions](https://mountcitrus.com/get-started) for managing your Google sheet.
 
 ### Show Me!
 
