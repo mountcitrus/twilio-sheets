@@ -4,11 +4,6 @@ var utilities = require('./utilities');
 var SHEETS_URI = "";
 var ADMIN_PHONES = [];
 
-exports.report = () => {
-    //return ADMIN_PHONES;
-    return utilities.getToken("2536771843", "456");
-}
-
 /**
  * @param {string} sheetsWebUri - Google sheets web app url (e.g. https://script.google.com/macros/s/[deployment-id]/exec)
  */
@@ -40,8 +35,7 @@ exports.handler = async (context, event, callback) => {
     let data = response.data.message;
 
     if (data == null) {
-      // the message was swalled by the client
-      return callback(null, "");
+      return callback(null, `Error 100: missing doPost override`);
     }
 
     // errors?
@@ -58,30 +52,32 @@ exports.handler = async (context, event, callback) => {
         return callback(null, utilities.promptStep2Greeting());
       } else if (data.action == "prompt.message") {
         return callback(null, utilities.promptStep3Body(data.group));
-      } else if (data.action == "prompt.schedule") {
-        return callback(null, utilities.promptStep4Schedule());
       } else if (data.action == "prompt.forwarding") {
-        return callback(null, utilities.promptStep5ForwardingOption());
+        return callback(null, utilities.promptStep4ForwardingOption());
       } else if (data.action == "prompt.review") {
-        return callback(null, utilities.promptStep6FinalReview(data.sampleMessage));
+        if (data.allowScheduling == true) {
+          return callback(null, utilities.promptStep5FinalReviewWithSchedulingOption(data.sampleMessage));
+        } else {
+          return callback(null, utilities.promptStep5FinalReview(data.sampleMessage));
+        }
       } else if (data.action == "prompt.clarify") {
         return callback(null, utilities.promptClarify(data.clarification));
       } else if (data.action == "prompt.sent") {
         return callback(null, utilities.promptSent());
       } else if (data.action == "prompt.queued") {
-        return callback(null, utilities.promptQueued());
+        return callback(null, utilities.promptQueued(data.friendlySchedule));
       } 
       else {
-        return callback(null, `ERROR 101: unknown action ${data.action}`);
+        return callback(null, `Error 101: unknown action ${data.action}`);
       }
     } else {
-      return callback(null, "ERROR 102: no action specified");
+      return callback(null, "Error 102: no action specified");
     }
   }
   else {
     // this is from a non-admin phone number    
     // record the response in our sheet
-    axios.post(SHEETS_URI, {
+    await axios.post(SHEETS_URI, {
       sender: event.From,
       token: utilities.getToken(context),
       action: 'recordResponse',
